@@ -1,0 +1,14 @@
+{
+  "name": "@sotaoi/config",
+  "version": "0.9.6",
+  "private": false,
+  "scripts": {
+    "bootstrap": "npm install --force --no-audit --no-fund && node ./scripts/build",
+    "bootstrap:prod": "npm run bootstrap"
+  },
+  "devDependencies": {
+    "@sotaoi/config": "file:./",
+    "@types/node": "^14",
+    "typescript": "4.1.5"
+  }
+}

@@ -1,0 +1,42 @@
+interface AppInfo {
+  signature1: string;
+  signature2: string;
+  environment: string;
+  name: string;
+  url: string;
+  bundleUid: string;
+  bundleName: string;
+  isMasterBundle: string;
+  bundleInstalled: string;
+  packageName: string;
+  proxyDomain: string;
+  proxyDomainAlias: string;
+  proxyPort: string;
+  apiDomain: string;
+  apiPort: string;
+  oauthDomain: string;
+  oauthPort: string;
+  oauthPrefix: string;
+  phpDomain: string;
+  phpPort: string;
+  phpXDomain: string;
+  phpXPort: string;
+  redirectFromPort: string;
+  translationsUrl: string;
+  privacyPolicyUrl: string;
+  termsOfUseUrl: string;
+  webDomain: string;
+  webPort: string;
+  streamingDomain: string;
+  streamingPort: string;
+  greenlockExecution: string;
+  sslMaintainer: string;
+  sslCert: string;
+  sslKey: string;
+  sslCa: string;
+  sslChain: string;
+  sslFullchain: string;
+  assetServiceUrl: string;
+}
+
+export type { AppInfo };
