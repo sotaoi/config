@@ -1,7 +1,20 @@
 {
   "name": "@sotaoi/config",
-  "version": "0.9.6",
   "private": false,
+  "version": "0.9.6",
+  "description": "",
+  "deploymentScheme": {
+    "init": "",
+    "copy": {
+      "skip": false,
+      "src": "./",
+      "exclude": [
+        "./node_modules"
+      ]
+    },
+    "catch": "",
+    "conclude": ""
+  },
   "scripts": {
     "bootstrap": "npm install --force --no-audit --no-fund && node ./scripts/build",
     "bootstrap:prod": "npm run bootstrap"
