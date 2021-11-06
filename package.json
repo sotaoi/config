@@ -16,8 +16,7 @@
     "conclude": ""
   },
   "scripts": {
-    "bootstrap": "npm install --force --no-audit --no-fund && node ./scripts/build",
-    "bootstrap:prod": "npm run bootstrap"
+    "bootstrap": "npm install --force --no-audit --no-fund && node ./scripts/build"
   },
   "devDependencies": {
     "@sotaoi/config": "file:./",
