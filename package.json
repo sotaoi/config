@@ -16,7 +16,7 @@
     "conclude": ""
   },
   "scripts": {
-    "bootstrap": "npm install --legacy-peer-deps --force --no-audit --no-fund && node ./scripts/build"
+    "bootstrap": "npm install --no-optional --legacy-peer-deps --force --no-audit --no-fund  --loglevel error && node ./scripts/build"
   },
   "devDependencies": {
     "@sotaoi/config": "file:./",
