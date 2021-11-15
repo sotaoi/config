@@ -1,19 +1,17 @@
-import type { AppInfo } from '@sotaoi/config/app-info';
-
 interface EnvInterface {
   [key: string]: null | string | boolean | { [key: string]: any };
 }
 
-class ConfigInstance<AppInfoType extends AppInfo = AppInfo> {
+class ConfigInstance {
   public _env: EnvInterface = {};
   public rawEnv: EnvInterface = {};
-  public appInfo: null | AppInfoType = null;
+  public appInfo: null | { [key: string]: string } = null;
   public configFn: null | ((key: string) => any);
 
   constructor(
     obj: { [key: string]: any },
     envVars: null | { [key: string]: undefined | null | string } = null,
-    appInfo: null | AppInfoType = null,
+    appInfo: null | { [key: string]: string } = null,
     configFn: null | ((key: string) => any) = null,
   ) {
     let parsedItem = null;
@@ -44,12 +42,12 @@ class ConfigInstance<AppInfoType extends AppInfo = AppInfo> {
     return this;
   }
 
-  public setAppInfo<AppInfoInlineType extends AppInfo = AppInfoType>(appInfo: AppInfoType): AppInfoInlineType {
+  public setAppInfo(appInfo: { [key: string]: string }): { [key: string]: string } {
     this.appInfo = appInfo;
     return JSON.parse(JSON.stringify(appInfo));
   }
 
-  public getAppInfo<AppInfoInlineType extends AppInfo = AppInfoType>(): null | AppInfoInlineType {
+  public getAppInfo(): null | { [key: string]: string } {
     return JSON.parse(JSON.stringify(this.appInfo));
   }
 
@@ -119,12 +117,12 @@ class ConfigInstance<AppInfoType extends AppInfo = AppInfo> {
 }
 
 class Config {
-  protected static configInstance: null | ConfigInstance<any> = null;
+  protected static configInstance: null | ConfigInstance = null;
 
-  public static init<AppInfoType extends AppInfo = AppInfo>(
+  public static init(
     obj: { [key: string]: any },
     envVars: { [key: string]: undefined | string },
-    appInfo: undefined | AppInfoType,
+    appInfo: undefined | { [key: string]: string },
     configFn: undefined | null | ((key: string) => any),
   ): Config {
     this.configInstance = new ConfigInstance(obj, envVars, appInfo || null, configFn || null);
@@ -139,14 +137,14 @@ class Config {
     return this.configInstance.setConfigFn(configFn);
   }
 
-  public static setAppInfo<AppInfoType extends AppInfo = AppInfo>(appInfo: AppInfoType): AppInfoType {
+  public static setAppInfo(appInfo: { [key: string]: string }): { [key: string]: string } {
     if (!this.configInstance) {
       throw new Error('Something went wrong, config instance does not exist');
     }
     return this.configInstance.setAppInfo(appInfo);
   }
 
-  public static getAppInfo<AppInfoType extends AppInfo = AppInfo>(): null | AppInfoType {
+  public static getAppInfo(): null | { [key: string]: string } {
     if (!this.configInstance) {
       throw new Error('Something went wrong, config instance does not exist');
     }
